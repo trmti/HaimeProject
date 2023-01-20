@@ -1,0 +1,243 @@
+@mixin neonAnim($name, $color) {
+  @keyframes #{$name} {
+    78% {
+      color: inherit;
+      text-shadow: inherit;
+    }
+    79% {
+      color: $color;
+    }
+    80% {
+      text-shadow: none;
+    }
+    81% {
+      color: inherit;
+      text-shadow: inherit;
+    }
+    82% {
+      color: $color;
+      text-shadow: none;
+    }
+    83% {
+      color: inherit;
+      text-shadow: inherit;
+    }
+    92% {
+      color: $color;
+      text-shadow: none;
+    }
+    92.5% {
+      color: inherit;
+      text-shadow: inherit;
+    }
+  }
+}
+
+@mixin neon($color1, $color2) {
+  text-shadow: 0 0 20px $color1, 0 10px 10px $color2, -10px 0 60px $color1,
+    0 10px 3px #000, 0 0 10px white, 0 0 20px white, 3px 0 0 $color2;
+}
+
+@include neonAnim('neonAnim1', rgba(177, 218, 172, 1));
+@include neonAnim('neonAnim2', rgba(172, 207, 218, 1));
+
+.description {
+  text-align: center;
+  width: 60%;
+  h1 {
+    color: rgba(0, 0, 0, 0);
+
+    -webkit-text-stroke: 1px #ffffff;
+    font-size: 64px;
+  }
+
+  p {
+    color: #ffffff;
+    text-shadow: none;
+    width: 70%;
+    padding: 50px 25px;
+    margin: 0 auto;
+    font-size: 20px;
+    border: 1px solid #ffffff;
+  }
+}
+
+.approveBtn {
+  cursor: pointer;
+  background: linear-gradient(45deg, #5433ff, #20bdff, #a5fecb);
+  border-radius: 600px;
+  padding: 2px;
+  width: 300px;
+  color: #b2ffff;
+  margin: 100px auto 0 auto;
+  box-shadow: 0 0 20px #5433ff, 0 10px 10px #a5fecb, -10px 0 60px #5433ff,
+    0 10px 3px #000, 0 0 10px white, 0 0 20px white, 3px 0 0 #a5fecb;
+
+  div {
+    background-color: #121212;
+    border-radius: 600px;
+    text-align: center;
+    line-height: 80px;
+    font-size: 35px;
+    box-shadow: 0 0 50px #5433ff inset, 0 1px 2px #20bdff inset,
+      -1px 0 1px #5433ff inset, 0 0 5px white inset, 1px 0 3px #a5fecb inset;
+  }
+}
+
+.header {
+  display: flex;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  background-color: black;
+  width: 100%;
+  height: 80px;
+  justify-content: space-between;
+  img {
+    margin-top: 20px;
+    margin-left: 100px;
+    width: 180px;
+    height: 40px;
+  }
+  .connectBtn {
+    button {
+      border-radius: 100px;
+      cursor: pointer;
+      color: white;
+      width: 200px;
+      height: 50px;
+      border: 2px double transparent;
+      background-color: inherit;
+      background-image: linear-gradient(rgb(13, 14, 33), rgb(13, 14, 33)),
+        radial-gradient(circle at left top, rgb(1, 110, 218), rgb(217, 0, 192));
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+      font-size: 15px;
+    }
+  }
+  .options {
+    margin-right: 50px;
+    display: flex;
+    align-items: center;
+    p {
+      cursor: pointer;
+      margin-right: 50px;
+      font-style: 20px;
+    }
+  }
+}
+
+.topPage {
+  margin-top: 80px;
+  text-align: center;
+  img {
+    height: calc(100vh - 60px);
+    transform: translate(-10%, 0);
+    width: auto;
+  }
+}
+
+.member {
+  text-align: center;
+  position: relative;
+  color: rgb(86, 201, 86);
+  z-index: 10;
+  .joinMemberShip {
+    @include neon(rgb(86, 201, 86), green);
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top: 150px;
+    width: 100vw;
+  }
+  .Title {
+    animation: neonAnim1 linear infinite 1.5s;
+    position: relative;
+    z-index: auto;
+    &::before {
+      position: absolute;
+      z-index: -1;
+      content: 'JOIN OUR \A MEMBERSHIP';
+      white-space: pre;
+      left: 40%;
+      top: 40%;
+      color: rgba(0, 0, 0, 0);
+      -webkit-text-stroke: 5px rgba(132, 219, 121, 0.5);
+      text-shadow: none;
+      border: none;
+    }
+    &::after {
+      position: absolute;
+      z-index: -1;
+      content: 'JOIN OUR \A MEMBERSHIP';
+      white-space: pre;
+      left: 60%;
+      top: 60%;
+      color: rgba(0, 0, 0, 0);
+      -webkit-text-stroke: 5px rgba(132, 219, 121, 0.5);
+      text-shadow: none;
+      border: none;
+    }
+  }
+}
+
+.memberRight {
+  width: 40%;
+  margin-top: 50px;
+  img {
+    transform: translate(10%, 0px);
+    height: auto;
+    width: 100%;
+  }
+}
+
+.meetUpWrapper {
+  margin-top: 200px;
+  margin-bottom: 100px;
+}
+
+.meetUp {
+  @include neon(rgba(172, 207, 218, 1), rgb(10, 255, 243));
+  color: rgba(172, 207, 218, 1);
+  display: flex;
+  position: relative;
+  z-index: 10;
+  .Title {
+    animation: neonAnim1 linear infinite 1.5s;
+    position: relative;
+    &::before {
+      position: absolute;
+      z-index: -1;
+      content: 'JOIN OUR \A MEMBERSHIP';
+      white-space: pre;
+      left: 40%;
+      top: 40%;
+      color: rgba(0, 0, 0, 0);
+      -webkit-text-stroke: 5px rgba(10, 255, 243, 0.3);
+      text-shadow: none;
+      border: none;
+    }
+    &::after {
+      position: absolute;
+      z-index: -1;
+      content: 'JOIN OUR \A MEMBERSHIP';
+      white-space: pre;
+      left: 60%;
+      top: 60%;
+      color: rgba(0, 0, 0, 0);
+      -webkit-text-stroke: 5px rgba(10, 255, 243, 0.3);
+      text-shadow: none;
+      border: none;
+    }
+  }
+}
+
+.meetLeft {
+  width: 40%;
+  margin-top: 50px;
+  img {
+    border-radius: 100%;
+    transform: translate(-20%, 0px);
+    height: auto;
+    width: 100%;
+  }
+}
